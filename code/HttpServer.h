@@ -16,7 +16,8 @@ class Epoll;
 class ThreadPool;
 class TimerManager;
 
-class HttpServer {
+class HttpServer
+{
 public:
     HttpServer(int port, int numThread);
     ~HttpServer();

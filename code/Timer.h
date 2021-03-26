@@ -18,15 +18,19 @@ using Timestamp = Clock::time_point;
 
 class HttpRequest;
 
-class Timer {
+class Timer
+{
 public:
     Timer(const Timestamp& when, const TimeoutCallBack& cb)
         : expireTime_(when),
           callBack_(cb),
           delete_(false) {}
+
     ~Timer() {}
+
     void del() { delete_ = true; }
     bool isDeleted() { return delete_; }
+
     Timestamp getExpireTime() const { return expireTime_; }
     void runCallBack() { callBack_(); }
 
@@ -37,7 +41,8 @@ private:
 }; // class Timer
 
 // 比较函数，用于priority_queue，时间值最小的在队头
-struct cmp {
+struct cmp
+{
     bool operator()(Timer* a, Timer* b)
     {
         assert(a != nullptr && b != nullptr);
@@ -45,11 +50,12 @@ struct cmp {
     }
 };
 
-class TimerManager {
+class TimerManager
+{
 public:
-    TimerManager() 
-        : now_(Clock::now()) {}
+    TimerManager() : now_(Clock::now()) {}
     ~TimerManager() {}
+
     void updateTime() { now_ = Clock::now(); }
 
     void addTimer(HttpRequest* request, const int& timeout, const TimeoutCallBack& cb); // timeout单位ms

@@ -12,7 +12,8 @@
 
 namespace swings {
 
-class Buffer {
+class Buffer
+{
 public:
     Buffer()
         : buffer_(INIT_SIZE),
@@ -82,7 +83,8 @@ public:
 
     void ensureWritableBytes(size_t len) // 确保缓冲区有足够空间
     {
-        if(writableBytes() < len) {
+        if(writableBytes() < len)
+        {
             __makeSpace(len);
         }
         assert(writableBytes() >= len);
@@ -125,14 +127,17 @@ private:
 
     void __makeSpace(size_t len) // 确保缓冲区有足够空间
     {
-        if(writableBytes() + prependableBytes() < len) {
+        if(writableBytes() + prependableBytes() < len)
+        {
             buffer_.resize(writerIndex_ + len);
         }
-        else {
+        else
+        {
             size_t readable = readableBytes();
             std::copy(__begin() + readerIndex_,
                       __begin() + writerIndex_,
                       __begin());
+
             readerIndex_ = 0;
             writerIndex_ = readerIndex_ + readable;
             assert(readable == readableBytes());

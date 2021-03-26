@@ -10,7 +10,8 @@
 
 namespace swings {
 
-class ThreadPool {
+class ThreadPool
+{
 public:
     using JobFunction = std::function<void()>;
 
@@ -23,6 +24,7 @@ private:
     std::mutex lock_;
     std::condition_variable cond_;
     std::queue<JobFunction> jobs_;
+
     bool stop_;
 };
 

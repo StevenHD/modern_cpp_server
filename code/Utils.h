@@ -5,7 +5,8 @@
 
 namespace swings {
 
-namespace utils {
+namespace utils
+{
     int createListenFd(int port); // 创建监听描述符
     int setNonBlocking(int fd); // 设置非阻塞模式
 }

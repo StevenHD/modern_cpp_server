@@ -14,7 +14,8 @@ namespace swings {
 class HttpRequest;
 class ThreadPool;
 
-class Epoll {
+class Epoll
+{
 public:
     using NewConnectionCallback = std::function<void()>;
     using CloseConnectionCallback = std::function<void(HttpRequest*)>;

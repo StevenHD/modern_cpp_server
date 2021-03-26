@@ -10,7 +10,8 @@ namespace swings {
 
 class Buffer;
 
-class HttpResponse {
+class HttpResponse
+{
 public:
     static const std::map<int, std::string> statusCode2Message;
     static const std::map<std::string, std::string> suffix2Type;
@@ -24,6 +25,7 @@ public:
     ~HttpResponse() {}
 
     Buffer makeResponse();
+
     void doErrorResponse(Buffer& output, std::string message);
     void doStaticRequest(Buffer& output, long fileSize);
 
